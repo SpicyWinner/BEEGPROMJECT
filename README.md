@@ -1,7 +1,7 @@
 # BEEGPROJECT
 Beeg Promject Main Repository [Under Development]
 
-An upcoming 2D Side Scroller Cyberpunk themed game which takes place in a dytopian metropolitan city.
+An upcoming 2D Side Scroller Cyberpunk themed game which takes place in a dystopian metropolitan city.
 
 
 +++CURRENTLY UNDER WORKS+++
