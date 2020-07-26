@@ -10,6 +10,8 @@ MainApplication::MainApplication(sf::VideoMode Vmode, std::string name)
 	window.setFramerateLimit(200);
 	delTime = 0;
 
+	AssetManager::access()->loadGlobalAssets();
+
 	StateMachine::access()->changeState(new SplashScreen());
 }
 
@@ -27,7 +29,7 @@ void MainApplication::run()
 		while (window.pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed) window.close();
-			StateMachine::access()->getActiveState()->eventHandler(event);
+			StateMachine::access()->getActiveState()->eventHandler(event, window);
 		}
 
 		StateMachine::access()->getActiveState()->update(delTime);

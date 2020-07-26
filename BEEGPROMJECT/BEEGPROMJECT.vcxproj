@@ -170,7 +170,9 @@
     <ClInclude Include="elib\guibase.hpp" />
     <ClInclude Include="elib\Slider.hpp" />
     <ClInclude Include="elib\TextBox.hpp" />
+    <ClInclude Include="eUtil.hpp" />
     <ClInclude Include="MainApplication.hpp" />
+    <ClInclude Include="MainMenu.hpp" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="SFMLOrthogonalLayer.hpp" />
     <ClInclude Include="SplashScreen.hpp" />
@@ -186,6 +188,7 @@
     <ClCompile Include="elib\Slider.cpp" />
     <ClCompile Include="elib\TextBox.cpp" />
     <ClCompile Include="MainApplication.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
