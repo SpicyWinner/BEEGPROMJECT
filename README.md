@@ -11,6 +11,8 @@ List of Thank Yous (Will be updated as the development progresses and will be ke
 
 SFML Team (https://sfml-dev.org)
 
+Thorbjørn Lindeijer (@bjorn) for Tiled Map Editor (https://mapeditor.org)
+
 Matt Styles (@fallahn) + contributors for the tmxlite library (https://github.com/fallahn/tmxlite)
 
 
