@@ -1,30 +1,32 @@
 #include "pch.h"
 #include "Animator.hpp"
 
-util::Animator::Animator(sf::Sprite& spr, sf::Vector2u gridSize, float switchTime)
+util::Animator::Animator(sf::Texture& texture, sf::Vector2f FrameSize, float switchTime) : switchTime(switchTime), frameSize(FrameSize)
 {
-	this->spr = spr;
-	imageRect.top = imageRect.left = 0;
-	imageRect.height = spr.getTexture()->getSize().y / gridSize.y;
-	imageRect.width = spr.getTexture()->getSize().x / gridSize.x;
-	states = gridSize.y;
-	framesPerState = gridSize.x;
-	this->switchTime = switchTime;
+	totalFrames = texture.getSize().x / FrameSize.x;
+	totalStates = texture.getSize().y / FrameSize.y;
+	currentFrame = 0;
+	animationClock.restart().asSeconds();
+
+	currentFrameRect.width = FrameSize.x;
+	currentFrameRect.height = FrameSize.y;
 }
 
-void util::Animator::updateAnimation(float deltaTime, int currentState)
+util::Animator::~Animator()
 {
-	imageRect.top = currentState;
-	referenceTime += deltaTime;
-	
-	if (referenceTime >= switchTime)
+}
+
+void util::Animator::update(sf::Sprite& sprite, int currentState)
+{
+	if (animationClock.getElapsedTime().asSeconds() >= switchTime)
 	{
-		referenceTime = 0;
-		if (imageRect.left + imageRect.width >= spr.getTexture()->getSize().x)
-			imageRect.left = 0;
-		else imageRect.left += imageRect.width;
+		if (currentFrame == totalFrames-1) currentFrame = 0;
+		else currentFrame++;
+		animationClock.restart().asSeconds();
 	}
 
-	spr.setTextureRect(imageRect);
+	currentFrameRect.left = currentFrame * frameSize.x;
+	currentFrameRect.top = currentState * frameSize.y;
 
+	sprite.setTextureRect(currentFrameRect);
 }

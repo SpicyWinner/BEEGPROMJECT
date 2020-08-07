@@ -24,6 +24,7 @@ void AssetManager::loadGlobalAssets()
 	//textures
 	loadTexture("texture_not_found", "data/images/NAtex.png");
 	loadTexture("logo", "data/images/goat.png");
+	loadTexture("testSprite", "data/images/testSprite.png");
 }
 
 void AssetManager::loadTexture(std::string name, std::string filepath)

@@ -6,16 +6,20 @@ namespace util
 	class Animator
 	{
 	public:
-		Animator(sf::Sprite& spr, sf::Vector2u gridSize, float switchTime);
+		Animator(sf::Texture& texture, sf::Vector2f FrameSize, float switchTime);
+		~Animator();
 
-		void updateAnimation(float deltaTime, int currentState);
+		void update(sf::Sprite& sprite, int currentState);
 
 	private:
-		sf::IntRect imageRect;
-		sf::Sprite spr;
+		int totalFrames, totalStates;
+		int currentFrame, currentState;
+		float switchTime;
 
-		float referenceTime, switchTime;
+		sf::Vector2f frameSize;
 
-		int states, framesPerState;
+		sf::IntRect currentFrameRect;
+
+		sf::Clock animationClock;
 	};
 }

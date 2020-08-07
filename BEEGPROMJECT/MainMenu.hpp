@@ -4,6 +4,7 @@
 #include"StateMachine.hpp"
 #include"AssetManager.hpp"
 #include"elib/Button.hpp"
+#include"elib/Animator.hpp"
 
 class MainMenu : public State
 {
@@ -18,5 +19,11 @@ public:
 
 private:
 	gui::Button PLAY, CREDITS, EXIT;
+
+	sf::Sprite logo;
+
+	util::Animator animator;
+
+	int currentState;
 };
 
