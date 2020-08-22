@@ -5,6 +5,7 @@
 #include"AssetManager.hpp"
 #include"elib/Button.hpp"
 #include"elib/Animator.hpp"
+#include"CreditsScreen.hpp"
 
 class MainMenu : public State
 {
@@ -21,9 +22,18 @@ private:
 	gui::Button PLAY, CREDITS, EXIT;
 
 	sf::Sprite logo;
+	sf::Sound Test;
 
-	util::Animator animator;
+	sf::Sprite ligt;
+	int animGroup;
+	bool drawLight;
+	int currentAnimationState;
 
-	int currentState;
+	sf::Clock aClock;
+	sf::Clock delayTimer;
+
+	void lAnima(float switchTime);
+
+	void changeStateToCreds();
 };
 

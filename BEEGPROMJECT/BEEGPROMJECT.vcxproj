@@ -164,6 +164,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AssetManager.hpp" />
+    <ClInclude Include="CreditsScreen.hpp" />
     <ClInclude Include="elib\Animator.hpp" />
     <ClInclude Include="elib\Button.hpp" />
     <ClInclude Include="elib\CheckBox.hpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="elib\Slider.hpp" />
     <ClInclude Include="elib\TextBox.hpp" />
     <ClInclude Include="eUtil.hpp" />
+    <ClInclude Include="GameObject.hpp" />
     <ClInclude Include="MainApplication.hpp" />
     <ClInclude Include="MainMenu.hpp" />
     <ClInclude Include="pch.h" />
@@ -178,15 +180,18 @@
     <ClInclude Include="SplashScreen.hpp" />
     <ClInclude Include="State.hpp" />
     <ClInclude Include="StateMachine.hpp" />
+    <ClInclude Include="Weapons.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="CreditsScreen.cpp" />
     <ClCompile Include="elib\Animator.cpp" />
     <ClCompile Include="elib\Button.cpp" />
     <ClCompile Include="elib\CheckBox.cpp" />
     <ClCompile Include="elib\guibase.cpp" />
     <ClCompile Include="elib\Slider.cpp" />
     <ClCompile Include="elib\TextBox.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="MainApplication.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="pch.cpp">
@@ -198,6 +203,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SplashScreen.cpp" />
     <ClCompile Include="StateMachine.cpp" />
+    <ClCompile Include="Weapons.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

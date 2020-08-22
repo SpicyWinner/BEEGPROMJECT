@@ -16,6 +16,9 @@ namespace gui
 		//Edit styling options for the text on the button (Bold, Italic, etc.)
 		void setTextStyle(sf::Uint32 style);
 
+		//check if clicked
+		bool isClicked(const sf::RenderWindow& window);
+
 		//Set the Color of the Button and the Text
 		void setColor(sf::Color BoxColor, sf::Color TextColor);
 

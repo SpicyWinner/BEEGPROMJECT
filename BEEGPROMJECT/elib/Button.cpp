@@ -20,6 +20,15 @@ void gui::Button::setTextStyle(sf::Uint32 style)
 	adjustText();
 }
 
+bool gui::Button::isClicked(const sf::RenderWindow& window)
+{
+	if (box.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(window)))) 
+		if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			return true;
+
+    return false;
+}
+
 void gui::Button::setColor(sf::Color BoxColor, sf::Color TextColor)
 {
 	box.setFillColor(BoxColor);

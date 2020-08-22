@@ -2,11 +2,12 @@
 #include "MainApplication.hpp"
 #include "StateMachine.hpp"
 #include "SplashScreen.hpp"
+#include "CreditsScreen.hpp"
 
 MainApplication::MainApplication(sf::VideoMode Vmode, std::string name)
 {
 	this->Vmode = Vmode;
-	window.create(this->Vmode, name, sf::Style::Fullscreen);
+	window.create(this->Vmode, name, sf::Style::Close);
 	window.setFramerateLimit(200);
 	delTime = 0;
 
@@ -38,4 +39,9 @@ void MainApplication::run()
 		StateMachine::access()->getActiveState()->draw(window);
 		window.display();
 	}
+}
+
+void MainApplication::closeApplication()
+{
+	window.close();
 }

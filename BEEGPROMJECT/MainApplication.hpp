@@ -9,6 +9,8 @@ public:
 
 	void run();
 
+	void closeApplication();
+
 private:
 	sf::VideoMode Vmode;
 	sf::RenderWindow window;
