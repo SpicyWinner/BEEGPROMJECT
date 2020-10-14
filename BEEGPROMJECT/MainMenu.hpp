@@ -21,8 +21,18 @@ public:
 private:
 	gui::Button PLAY, CREDITS, EXIT;
 
+	sf::Text pressanykey;
+	bool pak;
+
+	sf::RectangleShape shadeoverlay;
+
+
 	sf::Sprite logo;
 	sf::Sound Test;
+
+	sf::Sprite bg;
+
+	float lDelay;
 
 	sf::Sprite ligt;
 	int animGroup;

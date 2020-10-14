@@ -12,6 +12,8 @@ MainMenu::MainMenu() :
 	drawLight = true;
 	aClock.restart().asSeconds();
 	delayTimer.restart().asSeconds();
+	pak = false;
+	lDelay = float(std::rand() % 2 + 1);
 }
 
 MainMenu::~MainMenu()
@@ -28,7 +30,19 @@ void MainMenu::initialize()
 	CREDITS.setFunction([]() { std::cout << "CREDITS!" << std::endl; });
 	EXIT.setFunction([]() { exit(0); });
 
-	logo.setTexture(AssetManager::access()->getTexture("goat"));
+	pressanykey.setString("Press ENTER to continue...");
+	pressanykey.setFont(AssetManager::access()->getFont("sjbadjkw"));
+	pressanykey.setCharacterSize(40);
+	util::eUtil::centerOrigin(pressanykey);
+	pressanykey.setPosition(960.0f, 960.0f);
+
+	shadeoverlay.setSize(sf::Vector2f(1920, 1080));
+	shadeoverlay.setFillColor(sf::Color(0, 0, 0, 175));
+
+
+	bg.setTexture(AssetManager::access()->getTexture("mm_bg"));
+
+	logo.setTexture(AssetManager::access()->getTexture("Title"));
 	util::eUtil::centerOrigin(logo);
 	logo.setPosition(960.0f, 200.0f);
 
@@ -51,38 +65,48 @@ void MainMenu::eventHandler(sf::Event& event, const sf::RenderWindow& window)
 
 void MainMenu::update(float delTime)
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad0)) currentAnimationState = 0;
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad1)) currentAnimationState = 1;
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad2)) currentAnimationState = 2;
 	
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) Test.play();
-
-	if (delayTimer.getElapsedTime().asSeconds() > 1.0f)
+	if (!pak)
+	{
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) pak = true;
+	}
+	else
+	{
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) Test.play();
+	}
+	//std::cout << "dL : " << drawLight << std::endl;
+	if (delayTimer.getElapsedTime().asSeconds() > lDelay)
 	{
 		drawLight = true;
 		delayTimer.restart().asSeconds();
+		lDelay = float(std::rand() % 2 + 1);
 	}
-	
-	lAnima(0.02f);
 
-	//std::cout << "dL : " << drawLight << std::endl;
-	
+	lAnima(0.02f);
 
 }
 
 void MainMenu::draw(sf::RenderTarget& target)
 {
-	PLAY.render(target);
-	CREDITS.render(target);
-	EXIT.render(target);
+	target.draw(bg);
 	target.draw(logo);
-	target.draw(ligt);
+	if (drawLight) target.draw(ligt);
+
+	if (!pak) target.draw(pressanykey);
+	else
+	{
+		target.draw(shadeoverlay);
+		target.draw(logo);
+		PLAY.render(target);
+		CREDITS.render(target);
+		EXIT.render(target);
+	}
 }
 
 void MainMenu::lAnima(float switchTime)
 {
 	sf::IntRect rectTemp = ligt.getTextureRect();
-	rectTemp.top = animGroup * 400;
+	
 
 	if (rectTemp.left < 3600 && drawLight)
 	{
@@ -101,7 +125,7 @@ void MainMenu::lAnima(float switchTime)
 		int x = std::rand() % 1520 + 200;
 		int y = std::rand() % 140 + 200;
 		ligt.setPosition(x, y);
-		ligt.setTextureRect(sf::IntRect(0, 0, 400, 400));
+		ligt.setTextureRect(sf::IntRect(0, animGroup * 400, 400, 400));
 	}
 }
 

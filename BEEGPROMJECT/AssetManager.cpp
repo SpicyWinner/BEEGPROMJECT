@@ -24,9 +24,12 @@ void AssetManager::loadGlobalAssets()
 	//textures
 	loadTexture("texture_not_found", "data/images/NAtex.png");
 	loadTexture("logo", "data/images/goat.png");
+	loadTexture("Title", "data/images/Title.png");
 	loadTexture("testSprite", "data/images/testSprite.png");
 	loadTexture("creds", "data/images/creds.png");
 	loadTexture("lightning", "data/images/lightning.png");
+	loadTexture("mm_bg", "data/images/mainmenubg.png");
+	loadTexture("mm_h1", "data/images/h1.png");
 
 	//sfx
 	loadsfx("sfx_not_found", "data/audio/sfx/NAsfx.wav");
