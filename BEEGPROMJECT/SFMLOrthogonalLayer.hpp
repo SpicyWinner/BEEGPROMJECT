@@ -60,7 +60,8 @@ class MapLayer final : public sf::Drawable
 {
 public:
 
-
+    MapLayer()
+    {}
     MapLayer(const tmx::Map& map, std::size_t idx)
     {
         const auto& layers = map.getLayers();
@@ -87,6 +88,32 @@ public:
     }
 
     ~MapLayer() = default;
+
+    void setup(const tmx::Map& map, std::size_t idx)
+    {
+        const auto& layers = map.getLayers();
+        if (map.getOrientation() == tmx::Orientation::Orthogonal &&
+            idx < layers.size() && layers[idx]->getType() == tmx::Layer::Type::Tile)
+        {
+            //round the chunk size to the nearest tile
+            const auto tileSize = map.getTileSize();
+            m_chunkSize.x = std::floor(m_chunkSize.x / tileSize.x) * tileSize.x;
+            m_chunkSize.y = std::floor(m_chunkSize.y / tileSize.y) * tileSize.y;
+            m_MapTileSize.x = map.getTileSize().x;
+            m_MapTileSize.y = map.getTileSize().y;
+            const auto& layer = layers[idx]->getLayerAs<tmx::TileLayer>();
+            createChunks(map, layer);
+
+            auto mapSize = map.getBounds();
+            m_globalBounds.width = mapSize.width;
+            m_globalBounds.height = mapSize.height;
+        }
+        else
+        {
+            std::cout << "Not a valid orthogonal layer, nothing will be drawn." << std::endl;
+        }
+    }
+
     MapLayer(const MapLayer&) = delete;
     MapLayer& operator = (const MapLayer&) = delete;
 
@@ -601,6 +628,7 @@ private:
                         break;
                     }
                 }
+
                 if (delta > overallDuration)    // loop the animation by resetting start time
                 {
                     as.startTime = elapsed;

@@ -3,6 +3,7 @@
 #include "StateMachine.hpp"
 #include "SplashScreen.hpp"
 #include "CreditsScreen.hpp"
+#include "GameState.hpp"
 
 MainApplication::MainApplication(sf::VideoMode Vmode, std::string name)
 {

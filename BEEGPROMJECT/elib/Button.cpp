@@ -22,10 +22,14 @@ void gui::Button::setTextStyle(sf::Uint32 style)
 
 bool gui::Button::isClicked(const sf::RenderWindow& window)
 {
-	if (box.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(window)))) 
-		if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
+	if (box.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(window))))
+	
+		
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 			return true;
 
+	
+	
     return false;
 }
 

@@ -59,6 +59,7 @@ void SplashScreen::update(float delTime)
 
 void SplashScreen::draw(sf::RenderTarget& renderer)
 {
+	renderer.setView(renderer.getDefaultView());
 	renderer.draw(logo);
 	renderer.draw(boxA);
 	renderer.draw(boxB);

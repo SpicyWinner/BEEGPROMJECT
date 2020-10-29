@@ -6,6 +6,7 @@
 #include"elib/Button.hpp"
 #include"elib/Animator.hpp"
 #include"CreditsScreen.hpp"
+#include"GameState.hpp"
 
 class MainMenu : public State
 {
@@ -26,9 +27,7 @@ private:
 
 	sf::RectangleShape shadeoverlay;
 
-
 	sf::Sprite logo;
-	sf::Sound Test;
 
 	sf::Sprite bg;
 
@@ -44,6 +43,7 @@ private:
 
 	void lAnima(float switchTime);
 
-	void changeStateToCreds();
+	
+
 };
 

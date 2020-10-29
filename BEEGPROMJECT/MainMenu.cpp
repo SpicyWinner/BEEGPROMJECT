@@ -25,10 +25,13 @@ void MainMenu::initialize()
 	PLAY.setPosition(sf::Vector2f(960.0f, 540.0f));
 	CREDITS.setPosition(sf::Vector2f(960.0f, 640.0f));
 	EXIT.setPosition(sf::Vector2f(960.0f, 740.0f));
+	/*
+	PLAY.setFunction([]() {StateMachine::access()->changeState(new GameState()); });
+	CREDITS.setFunction([]() {StateMachine::access()->changeState(new CreditsScreen()); });
+	EXIT.setFunction([]() { std::cout << "exit"; });
+	*/
 
-	PLAY.setFunction([]() { std::cout << "PLAY!" << std::endl; });
-	CREDITS.setFunction([]() { std::cout << "CREDITS!" << std::endl; });
-	EXIT.setFunction([]() { exit(0); });
+	
 
 	pressanykey.setString("Press ENTER to continue...");
 	pressanykey.setFont(AssetManager::access()->getFont("sjbadjkw"));
@@ -51,29 +54,27 @@ void MainMenu::initialize()
 	ligt.setOrigin(200.0f, 200.0f);
 	ligt.setPosition(200.0f, 200.0f);
 
-	Test.setBuffer(AssetManager::access()->getSFX("skajfhekjf"));
+	
 }
 
 void MainMenu::eventHandler(sf::Event& event, const sf::RenderWindow& window)
 {
-	PLAY.EventHandler(event, window);
+	/*PLAY.EventHandler(event, window);
 	CREDITS.EventHandler(event, window);
-	EXIT.EventHandler(event, window);
-
-	if (CREDITS.isClicked(window)) changeStateToCreds();
+	EXIT.EventHandler(event, window);*/
+	if (PLAY.isClicked(window)) StateMachine::access()->changeState(new GameState());
+	if (CREDITS.isClicked(window)) StateMachine::access()->changeState(new CreditsScreen());
+	if (EXIT.isClicked(window)) std::cout << "EXIT";
 }
 
 void MainMenu::update(float delTime)
 {
-	
+
 	if (!pak)
 	{
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) pak = true;
 	}
-	else
-	{
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) Test.play();
-	}
+	
 	//std::cout << "dL : " << drawLight << std::endl;
 	if (delayTimer.getElapsedTime().asSeconds() > lDelay)
 	{
@@ -83,11 +84,11 @@ void MainMenu::update(float delTime)
 	}
 
 	lAnima(0.02f);
-
 }
 
 void MainMenu::draw(sf::RenderTarget& target)
 {
+	target.setView(target.getDefaultView());
 	target.draw(bg);
 	target.draw(logo);
 	if (drawLight) target.draw(ligt);
@@ -120,7 +121,6 @@ void MainMenu::lAnima(float switchTime)
 	else
 	{
 		animGroup = std::rand() % 5;
-		std::cout << animGroup << std::endl;
 		drawLight = false; 
 		int x = std::rand() % 1520 + 200;
 		int y = std::rand() % 140 + 200;
@@ -129,7 +129,6 @@ void MainMenu::lAnima(float switchTime)
 	}
 }
 
-void MainMenu::changeStateToCreds()
-{
-	StateMachine::access()->changeState(new CreditsScreen());
-}
+
+
+

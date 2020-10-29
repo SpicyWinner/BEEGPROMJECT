@@ -23,8 +23,6 @@ public:
 private:
 	sf::Sprite creds;
 
-	sf::Text NAME;
-
-	sf::Sprite logo;
+	sf::Sprite banner;
 };
 
