@@ -29,7 +29,8 @@ void GameState::initialize()
 	for (auto& obj : objLayer.getObjects())
 	{
 		if (obj.getType() == "SpawnPoint") player.setPosition(obj.getAABB().left + obj.getAABB().width / 2.0f, obj.getAABB().top + obj.getAABB().height / 2.0f);
-		else colliders.push_back(sf::FloatRect(obj.getAABB().left, obj.getAABB().top, obj.getAABB().width, obj.getAABB().height));
+		else if (obj.getType() == "platform") colliders.push_back(sf::FloatRect(obj.getAABB().left, obj.getAABB().top, obj.getAABB().width, obj.getAABB().height));
+		else if (obj.getType() == "triggers") triggers.push_back(sf::FloatRect(obj.getAABB().left, obj.getAABB().top, obj.getAABB().width, obj.getAABB().height));
 	}
 
 	baseBG.setup(map, 0);
@@ -39,6 +40,12 @@ void GameState::initialize()
 
 void GameState::eventHandler(sf::Event& event, const sf::RenderWindow& window)
 {
+	if (event.type == sf::Event::KeyReleased)
+		if (event.key.code == sf::Keyboard::Space && jumpDelayClock.getElapsedTime().asMilliseconds() > 500)
+		{
+			inAir = true;
+			jumpDelayClock.restart().asMilliseconds();
+		}
 }
 
 void GameState::update(float delTime)
@@ -51,6 +58,13 @@ void GameState::update(float delTime)
 
 	camera.setCenter(player.getPosition());
 
+	if (inAir)
+	{
+		if (jumpDelayClock.getElapsedTime().asMilliseconds() > 500)
+			player.move(0.0f, playerSpeed * delTime);
+		else player.move(0.0f, -playerSpeed * 3 * delTime);
+	}
+
 	for (auto& currentObj : colliders)
 	{
 		if (currentObj.intersects(player.getGlobalBounds()))
@@ -60,6 +74,8 @@ void GameState::update(float delTime)
 			if (player.getPosition().x < currentObj.left) player.move(-playerSpeed * delTime, 0.0f);
 			if (player.getPosition().x > currentObj.left + currentObj.width) player.move(playerSpeed * delTime, 0.0f);
 		}
+		if (currentObj.contains(sf::Vector2f(player.getGlobalBounds().left + player.getGlobalBounds().width / 2.0f, player.getGlobalBounds().top + player.getGlobalBounds().height)))
+			inAir = false;
 	}
 }
 
@@ -72,3 +88,4 @@ void GameState::draw(sf::RenderTarget& target)
 	
 	target.draw(player);
 }
+

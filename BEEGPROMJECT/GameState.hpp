@@ -29,10 +29,12 @@ private:
 
 	sf::View camera;
 
-	std::vector<sf::FloatRect> colliders;
+	std::vector<sf::FloatRect> colliders, triggers;
 
 	MapLayer baseBG, baseMAP;
 
+	sf::Clock jumpDelayClock;
 
+	bool inAir;
 };
 

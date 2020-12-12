@@ -637,7 +637,22 @@ private:
 			}
 		}
 	}
-
+	/*
+	void update(sf::Clock AnimationClock)
+	{
+		for (auto& c : m_visibleChunks)
+		{
+			for (AnimationState& as : c->getActiveAnimations())
+			{
+				tmx::TileLayer::Tile temp_tile;
+				if (AnimationClock.getElapsedTime().asMilliseconds() > 100)
+				{
+					temp_tile.ID = 
+				}
+			}
+		}
+	}
+	*/
 };
 
 #endif //SFML_ORTHO_HPP_
