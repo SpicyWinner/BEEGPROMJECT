@@ -9,6 +9,7 @@ CreditsScreen::CreditsScreen()
 
 CreditsScreen::~CreditsScreen()
 {
+	std::cout << "\nCreditsScreen class is destroyed";
 }
 
 void CreditsScreen::initialize()

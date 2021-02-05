@@ -19,6 +19,7 @@ MainApplication::MainApplication(sf::VideoMode Vmode, std::string name)
 
 MainApplication::~MainApplication()
 {
+	std::cout << "MainApplication class is destroyed";
 }
 
 void MainApplication::run()

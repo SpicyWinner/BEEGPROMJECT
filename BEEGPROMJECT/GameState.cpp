@@ -9,6 +9,7 @@ GameState::GameState()
 
 GameState::~GameState()
 {
+	std::cout << "\n GameState class is destroyed";
 }
 
 void GameState::initialize()

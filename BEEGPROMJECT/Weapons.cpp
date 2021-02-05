@@ -10,6 +10,7 @@ Weapon::Weapon(std::string ID, sf::Texture& txr, float damage ):
 
 Weapon::~Weapon()
 {
+
 }
 
 void Weapon::addAmmo(unsigned int increment)

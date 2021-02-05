@@ -9,6 +9,7 @@ StateMachine::StateMachine()
 
 StateMachine::~StateMachine()
 {
+	std::cout << "\n StateMachine class is destroyed";
 }
 
 StateMachine* StateMachine::access()
@@ -22,7 +23,7 @@ void StateMachine::changeState(State* newState)
 	State* temp = currentState;
 	currentState = newState;
 	currentState->initialize();
-	if(temp != nullptr) delete temp;
+	delete[] temp;
 }
 
 State* &StateMachine::getActiveState()

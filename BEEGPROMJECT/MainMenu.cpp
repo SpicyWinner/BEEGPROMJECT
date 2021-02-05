@@ -18,6 +18,7 @@ MainMenu::MainMenu() :
 
 MainMenu::~MainMenu()
 {
+	std::cout << "\n MainMenu class is destroyed";
 }
 
 void MainMenu::initialize()

@@ -20,6 +20,7 @@ public:
 	void update(float delTime) override;
 	void draw(sf::RenderTarget& target) override;
 
+
 private:
 	sf::Sprite creds;
 

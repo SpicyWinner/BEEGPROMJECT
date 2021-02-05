@@ -7,7 +7,7 @@ class Debug
 {
 public:
 
-	static void* Log(std::string log_message);
+	static void Log(std::string log_message);
 
 private:
 

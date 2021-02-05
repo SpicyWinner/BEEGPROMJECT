@@ -9,6 +9,7 @@ SplashScreen::SplashScreen()
 
 SplashScreen::~SplashScreen()
 {
+	std::cout << "\n SplashScreen class is destroyed";
 }
 
 void SplashScreen::initialize()

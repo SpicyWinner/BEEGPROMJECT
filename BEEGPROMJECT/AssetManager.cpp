@@ -8,6 +8,7 @@ AssetManager::AssetManager()
 
 AssetManager::~AssetManager()
 {
+	std::cout << "\n AssetManager class is destoryed";
 }
 
 AssetManager* AssetManager::access()
