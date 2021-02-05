@@ -63,8 +63,8 @@ void MainMenu::eventHandler(sf::Event& event, const sf::RenderWindow& window)
 	CREDITS.EventHandler(event, window);
 	EXIT.EventHandler(event, window);*/
 	if (PLAY.isClicked(window)) StateMachine::access()->changeState(new GameState());
-	if (CREDITS.isClicked(window)) StateMachine::access()->changeState(new CreditsScreen());
-	if (EXIT.isClicked(window)) std::cout << "EXIT";
+	else if (CREDITS.isClicked(window)) StateMachine::access()->changeState(new CreditsScreen());
+	else if (EXIT.isClicked(window)) exit(0);
 }
 
 void MainMenu::update(float delTime)

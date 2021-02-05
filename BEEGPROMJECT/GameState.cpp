@@ -4,6 +4,7 @@
 GameState::GameState()
 {
 	playerSpeed = 150.0f;
+	inAir = true;
 }
 
 GameState::~GameState()

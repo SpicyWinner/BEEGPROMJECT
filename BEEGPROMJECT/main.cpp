@@ -5,7 +5,7 @@
 
 int main()
 {
-	MainApplication app(sf::VideoMode(1920,1080), "BEEGPROMJECT");
+	MainApplication app(sf::VideoMode(1920, 1080), "Unchipped");
 	app.run();
 	return 0;
 }

@@ -166,6 +166,7 @@
   <ItemGroup>
     <ClInclude Include="AssetManager.hpp" />
     <ClInclude Include="CreditsScreen.hpp" />
+    <ClInclude Include="Debug.hpp" />
     <ClInclude Include="elib\Animator.hpp" />
     <ClInclude Include="elib\Button.hpp" />
     <ClInclude Include="elib\CheckBox.hpp" />
@@ -187,6 +188,7 @@
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="CreditsScreen.cpp" />
+    <ClCompile Include="Debug.cpp" />
     <ClCompile Include="elib\Animator.cpp" />
     <ClCompile Include="elib\Button.cpp" />
     <ClCompile Include="elib\CheckBox.cpp" />
