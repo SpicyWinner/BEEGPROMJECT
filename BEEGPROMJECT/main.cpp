@@ -1,6 +1,5 @@
 #include"pch.h"
 #include<SFML/Graphics.hpp>
-#include"SFMLOrthogonalLayer.hpp"
 #include"MainApplication.hpp"
 
 int main()
